@@ -58,7 +58,8 @@
 }
 
 a:hover {
-  color:  #fbdabb;;
+  color:  #fbdabb;
+  cursor: pointer;
 }
 
 header section h2 {
@@ -116,6 +117,10 @@ button {
 
 button:active {
   background-color:#ee9972;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 .specials {
@@ -555,6 +560,8 @@ footer {
 
 .footer-links {
   text-transform: capitalize;
+  text-decoration: none;
+  color: #edefee;
 }
 
 .footer-links:hover {

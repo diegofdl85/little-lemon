@@ -32,26 +32,26 @@ const Footer = () => {
                 <ul className="grid-item-nav">
                     <p className="footer-title">Document Navigation</p>
                     <li key="1">
-                        <LinkS to="/home" smooth duration={550} className="footer-links">Home</LinkS>
+                        <a href="/" className="footer-links">Home</a>
                     </li>
                     <li key="2">
-                        <LinkS to="/about" smooth duration={550} className="footer-links">About</LinkS>
+                        <LinkS to="about" smooth duration={550} className="footer-links">About</LinkS>
                     </li>
                     <li key="3">
-                        <LinkS to="/menu" smooth duration={550} className="footer-links">Menu</LinkS>
+                        <a href="/menu" className="footer-links">Menu</a>
                     </li>
                     <li key="4">
-                        <LinkS to="/reservations" smooth duration={550} className="footer-links">
+                        <a href="/booking" className="footer-links">
                         Reservations
-                        </LinkS>
+                        </a>
                     </li>
                     <li key="5">
-                        <LinkS to="/order-online" smooth duration={550} className="footer-links">
+                        <a href="/order-online" className="footer-links">
                         Order Online
-                        </LinkS>
+                        </a>
                     </li>
                     <li key="6">
-                        <LinkS to="/login" smooth duration={550} className="footer-links">Login</LinkS>
+                        <a href="/login" className="footer-links">Login</a>
                     </li>
                 </ul>
                 <ul className="grid-item-contact">
