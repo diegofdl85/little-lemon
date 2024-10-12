@@ -7,7 +7,7 @@ const BookingForm = (props) => {
         date: '',
         time: '',
         guests: '',
-        occasion: 'None'
+        occasion: ''
     });
 
     useEffect(() => {

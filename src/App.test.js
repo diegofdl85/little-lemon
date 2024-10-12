@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 import BookingForm from './components/BookingForm';
-import {initializeTimes, updateTimes} from './components/Main'
+import {fetchAPI, initializeTimes, updateTimes, submitAPI} from './components/Main'
 
 test('Renders the BookingForm heading', () => {
   render(<BookingForm availableTimes={{times:[]}} dispatch={expect.anything()}/>);
@@ -11,13 +11,39 @@ test('Renders the BookingForm heading', () => {
 
 test('initializeTimes function returns the correct value', () => {
   const initialState = initializeTimes();
-  const expectResult = {times: ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00']};
+  const today = new Date();
+  const expectResult = {times: fetchAPI(today)};
   expect(initialState).toEqual(expectResult);
 });
 
 test('updateTimes function returns the correct value', () => {
-  const state = {times: ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00']};
+  const state = initializeTimes();
   const date = new Date();
   const newState = updateTimes(state, date);
   expect(newState).toEqual(state);
 });
+
+test('submitAPI returns true', () => {
+  const formData = {
+    date: '2024-10-12',
+    time: '19:00',
+    guests: '3',
+    occasion: 'Wedding',
+  };
+  const result = submitAPI(formData);
+  expect(result).toBe(true);
+});
+
+test('Check if local storage is working', () => {
+  const formData = {
+    date: '2024-10-12',
+    time: '19:00',
+    guests: '3',
+    occasion: 'Wedding',
+  };
+  localStorage.setItem('data', JSON.stringify(formData));
+  const checkData = localStorage.getItem('data');
+  const jsonData = JSON.parse(checkData);
+  expect(jsonData).toEqual(formData);
+});
+

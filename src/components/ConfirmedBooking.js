@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Logo from '../images/Logo.svg';
 import {Link} from 'react-router-dom';
+import './Booking.css'
 
 const ConfirmedBooking = () => {
     const [reservedDetails, setReservedDetails] = useState('');
@@ -13,7 +14,9 @@ const ConfirmedBooking = () => {
     })
     return(
     <section name='booking-confirmation' className='booking-confirmation'>
-      <img src={Logo} alt='logo' className='confirmation-logo' />
+      <div className="container-logo">
+        <img src={Logo} alt='logo' className='confirmation-logo' />
+      </div>
       <h1 className='confirmation-confirmed'>Your reservation is confirmed!</h1>
       <div className='confirmation-details-container'>
         <h2>
@@ -36,7 +39,7 @@ const ConfirmedBooking = () => {
           </span>
         </h2>
        </div>
-       <Link to='/'><button>Return to the Homepage</button></Link>
+       <Link to='/'><button className="home-button">Return to the Homepage</button></Link>
     </section>
 
     )
