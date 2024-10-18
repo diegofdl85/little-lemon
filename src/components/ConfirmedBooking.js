@@ -11,7 +11,8 @@ const ConfirmedBooking = () => {
         if (data !== null) {
             setReservedDetails(JSON.parse(data));
         }
-    })
+    }, []);
+
     return(
     <section name='booking-confirmation' className='booking-confirmation'>
       <div className="container-logo">

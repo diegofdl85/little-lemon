@@ -3,7 +3,7 @@
     background-color: #495e57;
     padding: 3rem 2rem;
     font-family: 'Karla', sans-serif;
-    color: #edefee;
+    color: #f4ce14;
     margin-left: 1%;
     margin-right: 1%;
     margin-bottom: 1%;
@@ -70,6 +70,10 @@ label {
     cursor: pointer;
   }
 
+.booking-button:disabled {
+    background-color: gray;
+}
+
 .booking-confirmation {
     height: 100%;
     background-color: #495e57;
@@ -121,6 +125,10 @@ label {
     font-size: 20px;
   }
 
+.confirmation-details-container > h2{
+    font-size: 20px;
+}
+
 .home-button {
     font-size: 14px;
     width: 200px;
@@ -152,7 +160,5 @@ label {
     font-size: 24px;
 }
 
-.confirmation-details-container > h2{
-    font-size: 20px;
-}
+
 }

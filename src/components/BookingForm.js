@@ -10,8 +10,14 @@ const BookingForm = (props) => {
         occasion: ''
     });
 
+    const [isDisabled, setIsDisabled] = useState(true) // For button
+
     useEffect(() => {
         localStorage.setItem('bookings', JSON.stringify(bookings))
+        const isEmpty = Object.values(bookings).some(x => x === '');
+        if (isEmpty == false) {
+            setIsDisabled(false);
+        }
     }, [bookings]);
 
 
@@ -43,8 +49,12 @@ const BookingForm = (props) => {
                       required
                       value={bookings.date}
                       onChange={e => {
+                        const isEmpty = Object.values(bookings).some(x => x === '');
                         setBookings({...bookings, date: e.target.value})
-                        props.dispatch(e.target.value)}}
+                        props.dispatch(e.target.value)
+                        if (isEmpty == false) {
+                            setIsDisabled(false);
+                        }}}
                       aria-label="On Change"/>
                     <label htmlFor="res-time">Choose a time</label>
                     <select
@@ -54,6 +64,7 @@ const BookingForm = (props) => {
                       value={bookings.time}
                       onChange={handleChange}
                       aria-label="On Change">
+                        <option style={{display:'none'}}></option>
                         {times.map(time => {return <option key={time}>{time}</option>
                         })}
                     </select>
@@ -64,6 +75,7 @@ const BookingForm = (props) => {
                       min="1" max="10"
                       id="guests"
                       name="guests"
+                      role="guests"
                       value={bookings.guests}
                       required
                       aria-label="On Change"
@@ -76,12 +88,17 @@ const BookingForm = (props) => {
                       aria-label="On Change"
                       onChange={handleChange}
                       required>
+                        <option style={{display:'none'}}></option>
                         <option>None</option>
                         <option>Birthday</option>
                         <option>Anniversary</option>
                         <option>Wedding</option>
                     </select>
-                    <input type="submit" className="booking-button" value="Make Your reservation"/>
+                    <input
+                     type="submit"
+                     className="booking-button"
+                     value="Make Your reservation"
+                     disabled={isDisabled}/>
                 </form>
             </div>
         </section>

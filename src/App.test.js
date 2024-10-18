@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import App from './App';
 import BookingForm from './components/BookingForm';
 import {fetchAPI, initializeTimes, updateTimes, submitAPI} from './components/Main'
@@ -45,5 +46,19 @@ test('Check if local storage is working', () => {
   const checkData = localStorage.getItem('data');
   const jsonData = JSON.parse(checkData);
   expect(jsonData).toEqual(formData);
+});
+
+test('Check if the field guest is invalid', async () => {
+  render(<BookingForm availableTimes={{times:[]}} dispatch={expect.anything()}/>);
+  const guestElement = screen.getByRole('guests');
+  await userEvent.type(guestElement, '12');
+  expect(guestElement).toBeInvalid();
+});
+
+test('Check if the field guest is valid', async () => {
+  render(<BookingForm availableTimes={{times:[]}} dispatch={expect.anything()}/>);
+  const guestElement = screen.getByRole('guests');
+  await userEvent.type(guestElement, '6');
+  expect(guestElement).toBeValid();
 });
 
